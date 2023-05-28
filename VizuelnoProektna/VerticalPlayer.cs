@@ -7,10 +7,9 @@ using System.Threading.Tasks;
 
 namespace VizuelnoProektna
 {
-    public class HorizonralPlayer : Player
+    public class VerticalPlayer : Player
     {
-
-        public HorizonralPlayer(int width, int height, Point position, Color color) : base(width, height, position, color)
+        public VerticalPlayer(int width, int height, Point position, Color color) : base(height, width, position, color)
         {
         }
 
@@ -18,7 +17,7 @@ namespace VizuelnoProektna
         {
             Brush brush = new SolidBrush(Color.Black);
             Position = new Point(Width - (this.Width / 2), Height - this.Height + 5);
-            
+
             g.FillRectangle(brush, new Rectangle(Position.X, Position.Y, this.Width, this.Height));
             brush.Dispose();
         }

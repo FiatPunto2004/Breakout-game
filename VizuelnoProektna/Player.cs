@@ -18,11 +18,11 @@ namespace VizuelnoProektna
         {
             Width = width;
             Height = height;
-            Position = position;
+            Position = new Point(position.X, position.Y);
             Color = color;
         }
 
-        public abstract void Draw(Graphics g);
+        public abstract void Draw(Graphics g, int Width, int Height);
         public abstract void Move(int dx, int dy);
     }
 }
