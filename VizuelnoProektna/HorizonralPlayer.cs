@@ -10,16 +10,16 @@ namespace VizuelnoProektna
     public class HorizonralPlayer : Player
     {
 
-        public HorizonralPlayer(int width, int height, Point position, Color color) : base(width, height, position, color)
+        public HorizonralPlayer() : base()
         {
         }
 
         public override void Draw(Graphics g, int Width, int Height)
         {
             Brush brush = new SolidBrush(Color.Black);
-            Position = new Point(Width - (this.Width / 2), Height - this.Height + 5);
+            Position = new Point((Width / 2)-125, Height-65);
             
-            g.FillRectangle(brush, new Rectangle(Position.X, Position.Y, this.Width, this.Height));
+            g.FillRectangle(brush, new Rectangle(Position.X, Position.Y, 250, 10));
             brush.Dispose();
         }
 
