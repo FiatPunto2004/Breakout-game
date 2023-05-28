@@ -13,30 +13,32 @@ namespace VizuelnoProektna
         public static int Height = 20;
         public Point Position { get; set; }
         public Color Color { get; set; }
-        public Random Random { get; set; } = new Random();
+        public static Random Random { get; set; } = new Random();
         public int State { get; set; }
         public Blocks(Point Position) { 
             this.Position = Position;
             State = Random.Next(3);
-            switch (State)
-            {
-                case 0:
-                    Color = Color.Red;
-                    break;
-                case 1:
-                    Color = Color.Green;
-                    break;
-                case 2:
-                    Color = Color.Blue;
-                    break;
-            }
+
         }
 
         public void Draw(Graphics g)
         {
-            Brush brush = new SolidBrush(Color.Black);
+            Color color = new Color();
+            switch (State)
+            {
+                case 0:
+                    color = Color.Red;
+                    break;
+                case 1:
+                    color = Color.Blue;
+                    break;
+                default:
+                    color = Color.Green;
+                    break;
+            }
+            Brush brush = new SolidBrush(color);
 
-            g.FillRectangle(brush, new Rectangle(Position.X, Position.Y, 40, 20));
+            g.FillRectangle(brush, new Rectangle(Position.X, Position.Y, 80, 30));
             brush.Dispose();
         }
 

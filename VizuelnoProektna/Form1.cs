@@ -21,6 +21,18 @@ namespace VizuelnoProektna
             DoubleBuffered = true;
             timer1.Start();
             TimePassed = 0;
+            Point block = new Point(0, 10);
+            for(int i = 0; i < 4; i++)
+            {
+                block = new Point(block.X + 10, block.Y);
+                for(int j =0;j< 7;j++)
+                {
+                    scene.addBlocks(new Blocks(block));
+                    block = new Point(block.X + 85, block.Y);
+                }
+                block = new Point(0, block.Y + 35);
+            }
+
         }
 
         private void Form1_Load(object sender, EventArgs e)

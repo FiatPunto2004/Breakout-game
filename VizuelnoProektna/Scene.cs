@@ -23,9 +23,9 @@ namespace VizuelnoProektna
 
         }
 
-        public void addBlocks(Point block)
+        public void addBlocks(Blocks block)
         {
-            blocks.Add(new Blocks(block));
+            blocks.Add(block);
         }
 
         public void Draw(Graphics g)
