@@ -30,5 +30,16 @@ namespace VizuelnoProektna
                     break;
             }
         }
+
+        public void Draw(Graphics g)
+        {
+
+        }
+
+        public bool isHit(Point point)
+        {
+            return false;
+        }
+
     }
 }
