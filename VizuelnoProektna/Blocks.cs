@@ -15,7 +15,8 @@ namespace VizuelnoProektna
         public Color Color { get; set; }
         public Random Random { get; set; } = new Random();
         public int State { get; set; }
-        public Blocks() { 
+        public Blocks(Point Position) { 
+            this.Position = Position;
             State = Random.Next(3);
             switch (State)
             {
@@ -33,7 +34,10 @@ namespace VizuelnoProektna
 
         public void Draw(Graphics g)
         {
+            Brush brush = new SolidBrush(Color.Black);
 
+            g.FillRectangle(brush, new Rectangle(Position.X, Position.Y, 40, 20));
+            brush.Dispose();
         }
 
         public bool isHit(Point point)

@@ -25,7 +25,7 @@ namespace VizuelnoProektna
 
         public override void Move(int dx, int dy)
         {
-            Position = new Point(dx + Position.X, dy + Position.Y);
+            Position = new Point(dx + Position.X, dy + Position);
         }
     }
 }
