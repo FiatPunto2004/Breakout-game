@@ -19,7 +19,7 @@ namespace VizuelnoProektna
             
         }
 
-        public abstract void Draw(Graphics g, int Width, int Height);
+        public abstract void Draw(Graphics g);
         public abstract void Move(int dx, int dy);
     }
 }
