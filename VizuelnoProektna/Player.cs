@@ -14,12 +14,9 @@ namespace VizuelnoProektna
         public Point Position { get; set; }
         public Color Color { get; set; }
 
-        protected Player(int width, int height, Point position, Color color)
+        protected Player()
         {
-            Width = width;
-            Height = height;
-            Position = new Point(position.X, position.Y);
-            Color = color;
+            
         }
 
         public abstract void Draw(Graphics g, int Width, int Height);

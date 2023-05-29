@@ -9,16 +9,19 @@ namespace VizuelnoProektna
 {
     public class VerticalPlayer : Player
     {
-        public VerticalPlayer(int width, int height, Point position, Color color) : base(height, width, position, color)
+        public VerticalPlayer() : base()
         {
         }
 
         public override void Draw(Graphics g, int Width, int Height)
         {
             Brush brush = new SolidBrush(Color.Black);
-            Position = new Point(Width - (this.Width / 2), Height - this.Height + 5);
+            Position = new Point(10,Height/2 + Height*(1/4));
 
-            g.FillRectangle(brush, new Rectangle(Position.X, Position.Y, this.Width, this.Height));
+            g.FillRectangle(brush, new Rectangle(Position.X, Position.Y, 10, 120));
+
+            Position = new Point(Width-35, Height / 2 + Height * (1 / 4));
+            g.FillRectangle(brush, new Rectangle(Position.X, Position.Y, 10, 120));
             brush.Dispose();
         }
 

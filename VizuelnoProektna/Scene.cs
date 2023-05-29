@@ -9,16 +9,15 @@ namespace VizuelnoProektna
 {
     public class Scene
     {
-        public HorizonralPlayer hPlayer = new HorizonralPlayer(40, 20, new Point(0, 0), Color.Black);
-        public List<VerticalPlayer> vPlayers { set; get; }
+        public HorizonralPlayer hPlayer = new HorizonralPlayer();
+        public VerticalPlayer VPlayer = new VerticalPlayer();
         public List<Blocks> blocks { set; get; }
-        public int Widht { set; get; }
+        public int Width { set; get; }
         public int Height { set; get; }
         public Scene(int Width, int Height)
         {
-            this.Widht = Widht;
+            this.Width = Width;
             this.Height = Height;
-            vPlayers = new List<VerticalPlayer>();
             blocks = new List<Blocks>();
 
         }
@@ -34,11 +33,8 @@ namespace VizuelnoProektna
             {
                 b.Draw(g);
             }
-            hPlayer.Draw(g, this.Widht, this.Height);
-            foreach(VerticalPlayer v in vPlayers)
-            {
-                v.Draw(g, this.Widht, this.Height);
-            }
+            hPlayer.Draw(g, this.Width, this.Height);
+            VPlayer.Draw(g, this.Width, this.Height);
         }
 
 

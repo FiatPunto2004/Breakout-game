@@ -24,7 +24,7 @@ namespace VizuelnoProektna
             Point block = new Point(0, 10);
             for(int i = 0; i < 4; i++)
             {
-                block = new Point(block.X + 10, block.Y);
+                block = new Point(block.X + 30, block.Y);
                 for(int j =0;j< 7;j++)
                 {
                     scene.addBlocks(new Blocks(block));
