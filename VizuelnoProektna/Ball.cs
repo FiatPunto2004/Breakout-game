@@ -16,15 +16,15 @@ namespace VizuelnoProektna
         public Point Position { get; set; } 
         public int speed {  get; set; }
 
-        public Ball(int speed) {
+        public Ball(int speed, int Width, int Height) {
             this.speed = speed;
+            Position = new Point(Width / 2 - 20, Height - 100);
         }
 
-        public void Draw(Graphics g, int Width, int Height) {
+        public void Draw(Graphics g) {
             Color color = Color.Orange;
             Brush brush = new SolidBrush(color);
-            Position = new Point(Width / 2 - 20, Height - 100);
-            g.FillRectangle(brush, new Rectangle(Position.X, Position.Y, width, height));
+            g.FillEllipse(brush, Position.X, Position.Y, 20, 20);
             brush.Dispose();
         }
 

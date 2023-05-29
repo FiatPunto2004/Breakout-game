@@ -14,10 +14,15 @@ namespace VizuelnoProektna
     {
         public Scene scene { get; set; }
         public int TimePassed { get; set; } 
+        public bool moveUp { get; set; }
+        public bool moveDown { get; set; }
+        public bool moveLeft { get; set; }
+        public bool moveRight { get; set; }
         public Form1()
         {
             InitializeComponent();
             scene = new Scene(this.Width, this.Height);
+            moveDown = moveUp = moveLeft = moveRight = false;
             DoubleBuffered = true;
             timer1.Start();
             TimePassed = 0;
@@ -47,7 +52,63 @@ namespace VizuelnoProektna
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            
+            if(moveUp == true && scene.vPlayer.PositionL.Y > 0)
+            {
+                scene.MoveVerticaly(-10);
+            }
+            if(moveDown == true && scene.vPlayer.PositionL.Y+120 < this.Height-70)
+            {
+                scene.MoveVerticaly(10);
+            }
+            if(moveLeft == true && scene.hPlayer.Position.X > 0)
+            {
+                scene.MoveHorizontaly(-10);
+            }
+            if(moveRight == true && scene.hPlayer.Position.X + 120 < this.Width-20)
+            {
+                scene.MoveHorizontaly(10);
+            }
+
+            Invalidate(true);
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Up)
+            {
+                moveUp = true;
+            }
+            if(e.KeyCode == Keys.Down)
+            {
+                moveDown = true;
+            }
+            if (e.KeyCode == Keys.Left)
+            {
+                moveLeft = true;
+            }
+            if(e.KeyCode == Keys.Right){
+                moveRight = true;
+            }
+        }
+
+        private void Form1_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Up)
+            {
+                moveUp = false;
+            }
+            if (e.KeyCode == Keys.Down)
+            {
+                moveDown = false;
+            }
+            if (e.KeyCode == Keys.Left)
+            {
+                moveLeft = false;
+            }
+            if (e.KeyCode == Keys.Right)
+            {
+                moveRight = false;
+            }
         }
     }
 }

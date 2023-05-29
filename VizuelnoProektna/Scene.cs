@@ -9,8 +9,8 @@ namespace VizuelnoProektna
 {
     public class Scene
     {
-        public HorizonralPlayer hPlayer = new HorizonralPlayer();
-        public VerticalPlayer VPlayer = new VerticalPlayer();
+        public HorizonralPlayer hPlayer { set; get; }
+        public VerticalPlayer vPlayer { set; get; }
         public List<Blocks> blocks { set; get; }
         public Ball ball { set; get; }
         public int Width { set; get; }
@@ -21,8 +21,10 @@ namespace VizuelnoProektna
         {
             this.Width = Width;
             this.Height = Height;
+            hPlayer = new HorizonralPlayer(this.Width, this.Height);
+            vPlayer = new VerticalPlayer(this.Width, this.Height);
             blocks = new List<Blocks>();
-            ball = new Ball(5);
+            ball = new Ball(5, this.Width, this.Height);
             colors = new Color[3];
             for (int i = 0; i < 3; i++) { 
                 int red = Random.Next(0, 256);
@@ -43,13 +45,21 @@ namespace VizuelnoProektna
             {
                 b.Draw(g, colors[Random.Next(3)]);
             }
-            hPlayer.Draw(g, this.Width, this.Height);
-            VPlayer.Draw(g, this.Width, this.Height);
-            ball.Draw(g, this.Width, this.Height);
+            hPlayer.Draw(g);
+            vPlayer.Draw(g);
+            ball.Draw(g);
 
         }
 
+        public void MoveVerticaly(int dy)
+        {
+            vPlayer.Move(0, dy);
+        }
 
+        public void MoveHorizontaly(int dx)
+        {
+            hPlayer.Move(dx, 0);
+        }
 
     }
 }
