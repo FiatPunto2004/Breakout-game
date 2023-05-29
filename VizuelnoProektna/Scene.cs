@@ -25,9 +25,9 @@ namespace VizuelnoProektna
             ball = new Ball(5);
             colors = new Color[3];
             for (int i = 0; i < 3; i++) { 
-                int red = Random.Next(0, 255);
-                int green = Random.Next(0, 255);
-                int blue = Random.Next(0, 255);
+                int red = Random.Next(0, 256);
+                int green = Random.Next(0, 256);
+                int blue = Random.Next(0, 256);
                 colors[i]=Color.FromArgb(red, green, blue);
             }
         }

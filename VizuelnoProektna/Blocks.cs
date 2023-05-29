@@ -24,18 +24,18 @@ namespace VizuelnoProektna
         public void Draw(Graphics g, Color c)
         {
             Color color = new Color();
-            switch (State)
-            {
-                case 0:
-                    color = Color.Red;
-                    break;
-                case 1:
-                    color = Color.Blue;
-                    break;
-                default:
-                    color = Color.Green;
-                    break;
-            }
+            //switch (State)
+            //{
+            //    case 0:
+            //        color = Color.Red;
+            //        break;
+            //    case 1:
+            //        color = Color.Blue;
+            //        break;
+            //    default:
+            //        color = Color.Green;
+            //        break;
+            //}
             color = c;
             Brush brush = new SolidBrush(color);
 
