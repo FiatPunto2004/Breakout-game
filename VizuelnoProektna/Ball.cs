@@ -22,11 +22,14 @@ namespace VizuelnoProektna
         public void Draw(Graphics g, int Width, int Height) {
             Color color = Color.Orange;
             Brush brush = new SolidBrush(color);
-            g.FillRectangle(brush, new Rectangle(Width/2 - 20, Height-100, width, height));
+            Position = new Point(Width / 2 - 20, Height - 100);
+            g.FillRectangle(brush, new Rectangle(Position.X, Position.Y, width, height));
             brush.Dispose();
         }
 
-        
+        public void Move(int dx, int dy) {
+            Position = new Point(Position.X + dx, Position.Y + dy);
+        }
 
     }
 }
