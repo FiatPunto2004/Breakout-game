@@ -15,13 +15,21 @@ namespace VizuelnoProektna
         public Ball ball { set; get; }
         public int Width { set; get; }
         public int Height { set; get; }
+        public static Random Random = new Random();
+        public Color[] colors { set; get; }
         public Scene(int Width, int Height)
         {
             this.Width = Width;
             this.Height = Height;
             blocks = new List<Blocks>();
             ball = new Ball(5);
-
+            colors = new Color[3];
+            for (int i = 0; i < 3; i++) { 
+                int red = Random.Next(0, 256);
+                int green = Random.Next(0, 256);
+                int blue = Random.Next(0, 256);
+                colors[i]=Color.FromArgb(red, green, blue);
+            }
         }
 
         public void addBlocks(Blocks block)
@@ -33,7 +41,7 @@ namespace VizuelnoProektna
         {
             foreach(Blocks b in blocks)
             {
-                b.Draw(g);
+                b.Draw(g, colors[Random.Next(3)]);
             }
             hPlayer.Draw(g, this.Width, this.Height);
             VPlayer.Draw(g, this.Width, this.Height);
