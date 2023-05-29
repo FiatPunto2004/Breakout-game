@@ -15,6 +15,8 @@ namespace VizuelnoProektna
         public Ball ball { set; get; }
         public int Width { set; get; }
         public int Height { set; get; }
+        public static Random Random = new Random();
+        public Color[] colors { set; get; }
         public Scene(int Width, int Height)
         {
             this.Width = Width;
