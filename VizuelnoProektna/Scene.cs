@@ -12,6 +12,7 @@ namespace VizuelnoProektna
         public HorizonralPlayer hPlayer = new HorizonralPlayer();
         public VerticalPlayer VPlayer = new VerticalPlayer();
         public List<Blocks> blocks { set; get; }
+        public Ball ball { set; get; }
         public int Width { set; get; }
         public int Height { set; get; }
         public Scene(int Width, int Height)
@@ -19,6 +20,7 @@ namespace VizuelnoProektna
             this.Width = Width;
             this.Height = Height;
             blocks = new List<Blocks>();
+            ball = new Ball(5);
 
         }
 
@@ -35,6 +37,8 @@ namespace VizuelnoProektna
             }
             hPlayer.Draw(g, this.Width, this.Height);
             VPlayer.Draw(g, this.Width, this.Height);
+            ball.Draw(g, this.Width, this.Height);
+
         }
 
 
