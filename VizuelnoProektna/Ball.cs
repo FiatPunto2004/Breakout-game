@@ -13,6 +13,7 @@ namespace VizuelnoProektna
         
         public static int height = 20;
         public static int width = 20;
+        public Point Position { get; set; } 
         public int speed {  get; set; }
 
         public Ball(int speed) {
