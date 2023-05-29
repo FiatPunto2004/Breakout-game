@@ -21,7 +21,13 @@ namespace VizuelnoProektna
             this.Height = Height;
             blocks = new List<Blocks>();
             ball = new Ball(5);
-
+            colors = new Color[3];
+            for (int i = 0; i < 3; i++) { 
+                int red = Random.Next(0, 255);
+                int green = Random.Next(0, 255);
+                int blue = Random.Next(0, 255);
+                colors[i]=Color.FromArgb(red, green, blue);
+            }
         }
 
         public void addBlocks(Blocks block)
@@ -33,7 +39,7 @@ namespace VizuelnoProektna
         {
             foreach(Blocks b in blocks)
             {
-                b.Draw(g);
+                b.Draw(g, colors[Random.Next(3)]);
             }
             hPlayer.Draw(g, this.Width, this.Height);
             VPlayer.Draw(g, this.Width, this.Height);

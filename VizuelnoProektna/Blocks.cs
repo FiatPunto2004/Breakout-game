@@ -21,21 +21,22 @@ namespace VizuelnoProektna
 
         }
 
-        public void Draw(Graphics g)
+        public void Draw(Graphics g, Color c)
         {
             Color color = new Color();
-            switch (State)
-            {
-                case 0:
-                    color = Color.Red;
-                    break;
-                case 1:
-                    color = Color.Blue;
-                    break;
-                default:
-                    color = Color.Green;
-                    break;
-            }
+            //switch (State)
+            //{
+            //    case 0:
+            //        color = Color.Red;
+            //        break;
+            //    case 1:
+            //        color = Color.Blue;
+            //        break;
+            //    default:
+            //        color = Color.Green;
+            //        break;
+            //}
+            color = c;
             Brush brush = new SolidBrush(color);
 
             g.FillRectangle(brush, new Rectangle(Position.X, Position.Y, 80, 30));
