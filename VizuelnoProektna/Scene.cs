@@ -61,5 +61,10 @@ namespace VizuelnoProektna
             hPlayer.Move(dx, 0);
         }
 
+        public void moveBall(int dx, int dy)
+        {
+            ball.Move(dx, dy);
+        }
+
     }
 }

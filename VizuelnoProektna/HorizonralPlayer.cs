@@ -10,6 +10,9 @@ namespace VizuelnoProektna
     public class HorizonralPlayer : Player
     {
 
+        public static int width = 120;
+        public static int heights = 10;
+
         public HorizonralPlayer(int Width, int Height) : base()
         {
             Position = new Point((Width / 2) - 60, Height - 65);
@@ -19,7 +22,7 @@ namespace VizuelnoProektna
         {
             Brush brush = new SolidBrush(Color.Black);
             
-            g.FillRectangle(brush, new Rectangle(Position.X, Position.Y, 120, 10));
+            g.FillRectangle(brush, new Rectangle(Position.X, Position.Y, width, heights));
             brush.Dispose();
         }
 

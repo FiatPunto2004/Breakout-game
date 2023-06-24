@@ -11,6 +11,9 @@ namespace VizuelnoProektna
     {
         public Point PositionR { set; get; }
         public Point PositionL { set; get; }
+
+        public static int width = 10;
+        public static int heights = 120;
         public VerticalPlayer(int Width, int Height) : base()
         {
             PositionL = new Point(10, Height / 2 + Height * (1 / 4));
@@ -21,9 +24,9 @@ namespace VizuelnoProektna
         {
             Brush brush = new SolidBrush(Color.Black);
 
-            g.FillRectangle(brush, new Rectangle(PositionL.X, PositionL.Y, 10, 120));
+            g.FillRectangle(brush, new Rectangle(PositionL.X, PositionL.Y, width, heights));
 
-            g.FillRectangle(brush, new Rectangle(PositionR.X, PositionR.Y, 10, 120));
+            g.FillRectangle(brush, new Rectangle(PositionR.X, PositionR.Y, width, heights));
             brush.Dispose();
         }
 

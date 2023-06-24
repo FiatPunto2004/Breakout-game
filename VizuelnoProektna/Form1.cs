@@ -18,6 +18,10 @@ namespace VizuelnoProektna
         public bool moveDown { get; set; }
         public bool moveLeft { get; set; }
         public bool moveRight { get; set; }
+
+        public int dx { get; set; }
+        public int dy { get; set; }
+
         public Form1()
         {
             InitializeComponent();
@@ -37,7 +41,8 @@ namespace VizuelnoProektna
                 }
                 block = new Point(0, block.Y + 35);
             }
-
+            dx = 0;
+            dy = 10;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -68,8 +73,35 @@ namespace VizuelnoProektna
             {
                 scene.MoveHorizontaly(10);
             }
+            moveBallGlobal();
+            
 
             Invalidate(true);
+        }
+
+        public void moveBallGlobal()
+        {
+            Point ballPoss = scene.ball.Position;
+            Point hPPoss = scene.hPlayer.Position;
+            Point vPPossR = scene.vPlayer.PositionR;
+            Point vPPossL = scene.vPlayer.PositionL;
+            scene.moveBall(dx, dy);
+            if (hPPoss.Y == ballPoss.Y - (int) Ball.height/2 && hPPoss.X <= ballPoss.X - (int)Ball.height && hPPoss.X + HorizonralPlayer.width <= ballPoss.X + (int) Ball.width *1.5)
+            {
+                dx = dx;
+                dy = -dy;
+            }
+            else if (vPPossL.X + VerticalPlayer.width == ballPoss.X && vPPossL.Y >= ballPoss.Y + (int)Ball.height / 2 && vPPossL.Y - VerticalPlayer.heights <= ballPoss.Y - (int)Ball.height * 1.5)
+            {
+                dx = -dx;
+                dy = dy;
+            }
+            else if (vPPossR.X == ballPoss.X + (int)Ball.width && vPPossR.Y >= ballPoss.Y + (int)Ball.height / 2 && vPPossR.Y - VerticalPlayer.heights <= ballPoss.Y - (int) Ball.height * 1.5)
+            {
+                dx = -dx;
+                dy = dy;
+            }
+
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
