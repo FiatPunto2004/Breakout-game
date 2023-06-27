@@ -15,7 +15,7 @@ namespace VizuelnoProektna
 
         public HorizonralPlayer(int Width, int Height) : base()
         {
-            Position = new Point((Width / 2) - 60, Height - 65);
+            Position = new Point((Width / 2) - 60, Height - 75);
         }
 
         public override void Draw(Graphics g)
