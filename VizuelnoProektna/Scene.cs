@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace VizuelnoProektna
 {
     public class Scene
     {
-        public HorizonralPlayer hPlayer { set; get; }
+        public HorizontalPlayer hPlayer { set; get; }
         public VerticalPlayer vPlayer { set; get; }
         public List<Blocks> blocks { set; get; }
         public Ball ball { set; get; }
@@ -21,7 +23,7 @@ namespace VizuelnoProektna
         {
             this.Width = Width;
             this.Height = Height;
-            hPlayer = new HorizonralPlayer(this.Width, this.Height);
+            hPlayer = new HorizontalPlayer(this.Width, this.Height);
             vPlayer = new VerticalPlayer(this.Width, this.Height);
             blocks = new List<Blocks>();
             ball = new Ball(5, this.Width, this.Height);
@@ -63,6 +65,7 @@ namespace VizuelnoProektna
 
         public void moveBall(int dx, int dy)
         {
+     
             ball.Move(dx, dy);
         }
 

@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace VizuelnoProektna
 {
-    public class HorizonralPlayer : Player
+    public class HorizontalPlayer : Player
     {
 
         public static int width = 120;
-        public static int heights = 10;
+        public static int height = 10;
 
-        public HorizonralPlayer(int Width, int Height) : base()
+        public HorizontalPlayer(int Width, int Height) : base()
         {
             Position = new Point((Width / 2) - 60, Height - 75);
         }
@@ -22,7 +22,7 @@ namespace VizuelnoProektna
         {
             Brush brush = new SolidBrush(Color.Black);
             
-            g.FillRectangle(brush, new Rectangle(Position.X, Position.Y, width, heights));
+            g.FillRectangle(brush, new Rectangle(Position.X, Position.Y, width, height));
             brush.Dispose();
         }
 
