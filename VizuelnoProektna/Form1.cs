@@ -19,6 +19,8 @@ namespace VizuelnoProektna
         public bool moveLeft { get; set; }
         public bool moveRight { get; set; }
         public int points { get; set; }
+        public bool speedUp { get; set; }
+        public int speed {get; set; }
 
         public int dx { get; set; }
         public int dy { get; set; }
@@ -36,6 +38,9 @@ namespace VizuelnoProektna
             scene = new Scene(this.Width, this.Height);
             moveDown = moveUp = moveLeft = moveRight = false;
             DoubleBuffered = true;
+            speedUp = false;
+            timer1.Interval = 60;
+            speed = 10;
             timer1.Start();
             TimePassed = 0;
             points = 0;
@@ -53,7 +58,7 @@ namespace VizuelnoProektna
                 block = new Point(0, block.Y + 35);
             }
             dx = 0;
-            dy = -10;
+            dy = -speed;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -68,62 +73,66 @@ namespace VizuelnoProektna
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if(moveUp == true && scene.vPlayer.PositionL.Y > 0)
+            if(moveUp == true && scene.vPlayer.PositionL.Y >= 10)
             {
-                scene.MoveVerticaly(-15);
+                scene.MoveVerticaly(-(int)(speed * 1.5));
             }
-            if(moveDown == true && scene.vPlayer.PositionL.Y+120 < this.Height-70)
+            if(moveDown == true && scene.vPlayer.PositionL.Y+120 < this.Height-80)
             {
-                scene.MoveVerticaly(15);
+                scene.MoveVerticaly((int)(speed * 1.5));
             }
-            if(moveLeft == true && scene.hPlayer.Position.X > 0)
+            if(moveLeft == true && scene.hPlayer.Position.X >= 30)
             {
-                scene.MoveHorizontaly(-15);
+                scene.MoveHorizontaly(-(int)(speed * 1.5));
             }
-            if(moveRight == true && scene.hPlayer.Position.X + 120 < this.Width-20)
+            if(moveRight == true && scene.hPlayer.Position.X + 120 < this.Width-40)
             {
-                scene.MoveHorizontaly(15);
+                scene.MoveHorizontaly((int)(speed * 1.5));
             }
             moveBallGlobal();
 
             toolStripStatusLabel1.Text = "Points " + points;
+
+            if (points % 100 == 0 && points >= 100 && speedUp == true) 
+            {
+                speed += 5;
+                speedUp = false;
+            }
+
             Invalidate(true);
         }
 
-        public void moveBallGlobal()
+        private void moveBallGlobal()
         {
             Point ballPoss = scene.ball.Position;
             Point hPPoss = scene.hPlayer.Position;
             Point vPPossR = scene.vPlayer.PositionR;
             Point vPPossL = scene.vPlayer.PositionL;
-            scene.moveBall(dx, dy);
-            if (dy > 0 && hPPoss.Y <= ballPoss.Y + (int) Ball.height && hPPoss.Y + HorizonralPlayer.heights >= ballPoss.Y + Ball.height && hPPoss.X <= ballPoss.X + (int)Ball.width * 0.999 && hPPoss.X + HorizonralPlayer.width >= ballPoss.X + (int) Ball.width *0.0001)
+            if (dy > 0 && hPPoss.Y - 10 <= ballPoss.Y + (int) Ball.height  && hPPoss.Y + HorizontalPlayer.height >= ballPoss.Y && hPPoss.X - 10 <= ballPoss.X + (int)Ball.width && hPPoss.X + HorizontalPlayer.width + 10 >= ballPoss.X)
             {
-                dx = random.Next(-10, 11);
+                dx = random.Next(-speed, speed+1);
                 dy = Set(dy);
             }
-            else if (dx < 0 && vPPossL.X + VerticalPlayer.width >= ballPoss.X && vPPossL.X <= ballPoss.X && vPPossL.Y <= ballPoss.Y + (int)Ball.height * 0.999 && vPPossL.Y + VerticalPlayer.height >= ballPoss.Y + (int)Ball.height * 0.0001)
+            else if (dx < 0 && vPPossL.X + VerticalPlayer.width + 10 >= ballPoss.X && vPPossL.X <= ballPoss.X + Ball.width && vPPossL.Y - 10 <= ballPoss.Y + (int)Ball.height && vPPossL.Y + VerticalPlayer.height + 10 >= ballPoss.Y)
             {
                 dx = Set(dx);
-                dy = random.Next(-10, 11);
-
+                dy = random.Next(-speed, speed + 1);
             }
-            else if (dx > 0 && vPPossR.X <= ballPoss.X + (int)Ball.width && vPPossR.X + VerticalPlayer.width >= ballPoss.X + Ball.width && vPPossR.Y <= ballPoss.Y - (int)Ball.height * 0.999 && vPPossR.Y + VerticalPlayer.height >= ballPoss.Y + (int) Ball.height * 0.0001)
+            else if (dx > 0 && vPPossR.X - 10 <= ballPoss.X + (int)Ball.width && vPPossR.X + VerticalPlayer.width >= ballPoss.X && vPPossR.Y - 10 <= ballPoss.Y + (int)Ball.height && vPPossR.Y + VerticalPlayer.height + 10 >= ballPoss.Y)
             {
                 dx = Set(dx);
-                dy = random.Next(-10, 11);
-
+                dy = random.Next(-speed, speed + 1);
             }
             else if (isHit(ballPoss))
             {
-                dx = random.Next(-10, 11);
+                dx = random.Next(-speed, speed + 1);
                 dy = Set(dy);
 
             }
-            else if(ballPoss.Y + 20 <= 10 && dy < 0)
+            else if(ballPoss.Y + 20 <= 30 && dy < 0)
             {
-                dx = random.Next(-10, 11);
-                dy = -dy;
+                dx = random.Next(-speed, speed + 1);
+                dy = Set(dy);
 
             }
             else
@@ -142,27 +151,28 @@ namespace VizuelnoProektna
                     }
                 }
             }
-
+            scene.moveBall(dx, dy);
         }
 
-        public bool GameOver(Point ball)
+        private bool GameOver(Point ball)
         {
-            if((ball.X <= 0 || ball.Y + Ball.width >= this.Height || ball.X >= this.Width) || (scene.blocks.Count == 0))
+            if((ball.X - 20 <= 0 || ball.Y + Ball.width >= this.Height - 60 || ball.X + Ball.width >= this.Width - 30) || (scene.blocks.Count == 0))
             {
                 return true;
             }
             return false;
         }
        
-
-        public bool isHit(Point ballPoss)
+       
+        private bool isHit(Point ballPoss)
         {
             Blocks hit = null;
             bool IsHit = false;
             foreach(Blocks block in scene.blocks)
             {
-                if(block.Position.Y + Blocks.Height >= ballPoss.Y && block.Position.Y <= ballPoss.Y && block.Position.X <= ballPoss.X + (int)Ball.width * 0.9999 && block.Position.X + Blocks.Width >= ballPoss.X + (int)Ball.width * 0.0001)
+                if(block.Position.Y + Blocks.Height + 10 >= ballPoss.Y && block.Position.Y - 10 <= ballPoss.Y && block.Position.X - 15 <= ballPoss.X && block.Position.X + Blocks.Width + 15 >= ballPoss.X)
                 {
+                    speedUp = true;
                     hit = block;
                     IsHit = true;
                     break;
@@ -177,17 +187,17 @@ namespace VizuelnoProektna
             return IsHit;
         }
 
-        public int Set(int d)
+        private int Set(int d)
         {
-            if(Math.Abs(d) != 10)
+            if(Math.Abs(d) != speed)
             {
                 if(d < 0)
                 {
-                    d = -10;
+                    d = -speed;
                 }
                 else
                 {
-                    d = 10;
+                    d = speed;
                 }
             }
             else
