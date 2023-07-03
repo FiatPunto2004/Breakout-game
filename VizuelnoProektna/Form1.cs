@@ -140,7 +140,15 @@ namespace VizuelnoProektna
                 if (GameOver(ballPoss))
                 {
                     timer1.Stop();
-                    DialogResult dr = MessageBox.Show("Would you like to start a new game", "Game Over", MessageBoxButtons.YesNo);
+                    DialogResult dr;
+                    if (points == 280)
+                    {
+                        dr = MessageBox.Show("You won the game!\nCongratulations!\n" + "Would you like to start a new game?", "Victory", MessageBoxButtons.YesNo);
+                    }
+                    else {
+                        dr = MessageBox.Show("You scored " + points + " points.\n" + "Would you like to start a new game?", "Game Over", MessageBoxButtons.YesNo);
+                    }
+                    
                     if(dr == DialogResult.Yes)
                     {
                         Initialize();

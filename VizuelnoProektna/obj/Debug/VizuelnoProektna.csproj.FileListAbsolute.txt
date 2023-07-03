@@ -20,3 +20,14 @@ C:\Users\User\Source\Repos\Breakout-game-v2\VizuelnoProektna\obj\Debug\VizuelnoP
 C:\Users\User\Source\Repos\Breakout-game-v2\VizuelnoProektna\obj\Debug\VizuelnoProektna.csproj.CoreCompileInputs.cache
 C:\Users\User\Source\Repos\Breakout-game-v2\VizuelnoProektna\obj\Debug\VizuelnoProektna.exe
 C:\Users\User\Source\Repos\Breakout-game-v2\VizuelnoProektna\obj\Debug\VizuelnoProektna.pdb
+C:\Users\User\Source\Repos\Breakout-game-final-v-no-ch\VizuelnoProektna\bin\Debug\VizuelnoProektna.exe.config
+C:\Users\User\Source\Repos\Breakout-game-final-v-no-ch\VizuelnoProektna\bin\Debug\VizuelnoProektna.exe
+C:\Users\User\Source\Repos\Breakout-game-final-v-no-ch\VizuelnoProektna\bin\Debug\VizuelnoProektna.pdb
+C:\Users\User\Source\Repos\Breakout-game-final-v-no-ch\VizuelnoProektna\obj\Debug\VizuelnoProektna.csproj.AssemblyReference.cache
+C:\Users\User\Source\Repos\Breakout-game-final-v-no-ch\VizuelnoProektna\obj\Debug\VizuelnoProektna.csproj.SuggestedBindingRedirects.cache
+C:\Users\User\Source\Repos\Breakout-game-final-v-no-ch\VizuelnoProektna\obj\Debug\VizuelnoProektna.Form1.resources
+C:\Users\User\Source\Repos\Breakout-game-final-v-no-ch\VizuelnoProektna\obj\Debug\VizuelnoProektna.Properties.Resources.resources
+C:\Users\User\Source\Repos\Breakout-game-final-v-no-ch\VizuelnoProektna\obj\Debug\VizuelnoProektna.csproj.GenerateResource.cache
+C:\Users\User\Source\Repos\Breakout-game-final-v-no-ch\VizuelnoProektna\obj\Debug\VizuelnoProektna.csproj.CoreCompileInputs.cache
+C:\Users\User\Source\Repos\Breakout-game-final-v-no-ch\VizuelnoProektna\obj\Debug\VizuelnoProektna.exe
+C:\Users\User\Source\Repos\Breakout-game-final-v-no-ch\VizuelnoProektna\obj\Debug\VizuelnoProektna.pdb
