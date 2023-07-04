@@ -21,5 +21,7 @@ GUI
 
 ![Image cannot be open. See image class-diagram.png in this repository.](class-diagram.png)
 
+- Абстрактната класа Player се однесува на хоризонталниот и вертикалните лизгачки барови. За нив се чува должина и ширина (int),  една точка од објектот (од тип Point) и боја за самиот објект (Color)
+- 
 - Методот <code>Draw(...)</code> кој го имплементираат класите VerticalPlayer, HorizontalPlayer, Ball, Blocks, и Scene се користи за графичко исцртување на соодветните елементи на екран.
 - Методот <code>Move(...)</code> кој го имплементираат класите VerticalPlayer, HorizontalPlayer и Ball се користи за поместување на соодветните елементи во зависност од предадените параметри.
