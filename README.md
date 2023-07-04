@@ -17,3 +17,4 @@ GUI
 
 Имплементација
 ---------
+![Image cannot be open. See image class-diagram.png in this repository.](class-diagram.png)
